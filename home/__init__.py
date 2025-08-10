@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page Not Found</title>
-        <style>
-                body {
-                            font-family: Arial, sans-serif;
-                                        text-align: center;
-                                                    padding: 50px;
-                                                            }
+<h1 style="text-align: center; color:                                                        
+<nav style="text-align: center; margin: 20px;">
+    <a href="{% url 'home' %}" style="margin: 0 10px; text-decoration: none; color: #0056b3;">Home</a>
+        <a href="{% url 'restaurant_page' %}" style="margin: 0 10px; text-decoration: none; color: #0056b3;">About Our Restaurant</a>
+        </nav>
+        
                                                                     h1 {
                                                                                 color: #555;
                                                                                         }
