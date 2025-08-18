@@ -1,6 +1,27 @@
-<h1 style="font-family: Arial, sans-serif; color:                                         
-<nav style="text-align: center; margin: 20px 0; padding: 10px; background-color: #f0f0f0;">
-    <a href="{% url 'home' %}" style="margin: 0 15px; text-decoration: none; color:                   
-        <a href="{% url 'restaurant_page' %}" style="margin: 0 15px; text-decoration: none; color: #0056b3;">About Our Restaurant</a>
-        </nav>
-        
+# models.py
+from django.db import models
+
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    # views.py
+    from django.shortcuts import render
+    from .models import Restaurant
+
+    def homepage(request):
+        restaurant = Restaurant.objects.first()  # Fetch the first restaurant
+            return render(request, 'homepage.html', {'restaurant_n
+            ame': restaurant.name})
+            <!-- reservations.html -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Reservations</title>
+                        </head>
+                        <body>
+                            <h1>Reservations</h1>
+                                <p>Reservations page placeholder. Booking functionality coming soon!</p>
+                                </body>
+                                </html>
+                                
