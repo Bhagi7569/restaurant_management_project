@@ -1,14 +1,16 @@
-<!-- reservations.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Reservations</title>
-            </head>
-            <body>
-                <h1>Reservations</h1>
-                    <p>Reservations page placeholder. Booking functionality coming soon!</p>
-                    </body>
-                    </html>
-                    
+# urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+        # ...
+            path('search_menu_items/', views.SearchMenuItemsView.as_view(), name='search_menu_items'),
+            ]
+# views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class SearchMenuItemsView(APIView):
+    def get(self, request):
+            # We'll implement search logic here later
+                    return Response({"message": "Search functionality coming soon"})
