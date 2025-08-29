@@ -1,15 +1,13 @@
-# context_processors.py
-from datetime import datetime
+# views.py
+from django.conf import settings
+from django.shortcuts import render
 
-def restaurant_info(request):
-    return {
-            'restaurant_name': 'Your Restaurant Name',
-                    'current_year': datetime.now().year,
-                            'opening_hours': 'Mon-Fri: 11am-9pm, Sat-Sun: 10am-10pm',
-                                }
-<!-- base.html -->
-<footer>
-    <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
-        <p>Opening Hours: {{ opening_hours }}</p>
-        </footer>
-        
+def homepage(request):
+    restaurant_name = settings.RESTAURANT_NAME
+        return render(request, 'homepage.html', {'restaurant_name': restaurant_name})
+        # models.py
+        from django.db import models
+
+        class Restaurant(models.Model):
+            name = models.CharField(max_length=100)
+                # other fields...
