@@ -1,10 +1,19 @@
-# models.py
-from django.db import models
+# views.py
+from django.shortcuts import render
+from .models import MenuItem
 
-class MenuItem(models.Model):
-    name = models.CharField(max_length=100)
-        description = models.TextField()
-            price = models.DecimalField(max_digits=6, decimal_places=2)
-
-                def __str__(self):
-                        return self.name
+def menu(request):
+    menu_items = MenuItem.objects.all()
+        return render(request, 'menu.html', {'menu_items': menu_items})
+        <!-- menu.html -->
+        <h1>Our Menu</h1>
+        <ul>
+            {% for item in menu_items %}
+                    <li>
+                                <h2>{{ item.name }}</h2>
+                                            <p>{{ item.description }}</p>
+                                                        <p>Price: ${{ item.price }}</p>
+                                                                </li>
+                                                                    {% endfor %}
+                                                                    </ul>
+                                                                    
