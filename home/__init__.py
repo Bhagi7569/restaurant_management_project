@@ -1,12 +1,30 @@
-# models.py
-from django.db import models
+<!-- homepage.html -->
+<div>
+    <h2>Find Us</h2>
+        <p>Address: 123 Restaurant St, Food City</p>
+            <!-- Google Maps iframe -->
+                <iframe
+                        src="https:                                                                                                                                                                                                                                                                            
+                                width="600"
+                                        height="450"
+                                                frameborder="0"
+                                                        style="border:0;"
+                                                                allowfullscreen=""
+                                                                        aria-hidden="false"
+                                                                                tabindex="0"
+                                                                                    ></iframe>
+                                                                                    </div>
+/* styles.css */
+.map-section {
+    width: 100%;
+        padding: 20px;
+        }
 
-class ContactSubmission(models.Model):
-    name = models.CharField(max_length=100)
-        email = models.EmailField()
-            submitted_at = models.DateTimeField(auto_now_add=True)
-
-                def __str__(self):
-                        return f"Submission from {self.name}"
+        .map-section iframe {
+            width: 100%;
+                height: 300px;
+                    border: none;
+                    }
+                    
         
                                                                                          
