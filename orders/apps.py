@@ -1,6 +1,11 @@
-from django.apps import AppConfig
+# views.py
+from django.shortcuts import render
+from .models import MenuItem
 
-
-class OrdersConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'orders'
+def search_menu(request):
+    query = request.GET.get('q')
+        if query:
+                menu_items = MenuItem.objects.filter(name__icontains=query)
+                    else:
+                            menu_items = MenuItem.objects.all()
+                                return render(request, 'search_results.html', {'menu_items': menu_items, 'query': query})
