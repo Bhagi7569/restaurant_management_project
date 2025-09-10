@@ -1,11 +1,9 @@
-from django.contrib import admin
-from .models import *
+# models.py
+from django.db import models
 
+class Restaurant(models.Model):
+    name = models.CharField(max_length=100)
+        address = models.TextField()
 
-# Custom Admins
-class ItemAdmin(admin.ModelAdmin):
-    list_display = ['item_name','item_price','created_at']
-
-
-# Register your models here.
-admin.site.register(Item,ItemAdmin)
+            def __str__(self):
+                    return
