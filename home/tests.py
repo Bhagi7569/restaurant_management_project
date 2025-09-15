@@ -1,10 +1,18 @@
+# cart.py
+class Cart:
+    def __init__(self, request):
+            self.session = request.session
+                    cart = self.session.get('cart')
+                            if not cart:
+                                        cart = self.session['cart'] = {}
+                                                self.cart = cart
 
-from django.db import models
+                                                    def add_item(self, product_id):
+                                                            if product_id not in self.cart:
+                                                                        self.cart[product_id] = 1
+                                                                                else:
+                                                                                            self.cart[product_id] += 1
+                                                                                                    self.session.modified = True
 
-class Restaurant(models.Model):
-    name = models.CharField(max_length=100)
-        history = models.TextField()
-            mission = models.TextField()
-
-                def __str__(self):
-                        return self.name
+                                                                                                        def get_item_count(self):
+                                                                                                                return sum(self.cart.values())
