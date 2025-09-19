@@ -1,7 +1,8 @@
 from django.db import models
+from .models import OrderStatus  # Import the OrderStatus model
 
-class MenuCategory(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    
-        def __str__(self):
-                return self.nameform})
+class Order(models.Model):
+    # Existing fields...
+        status = models.ForeignKey(OrderStatus, on_delete=models.SET_NULL, null=True)
+
+            # Existing methods...
