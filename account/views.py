@@ -1,8 +1,7 @@
 from django.db import models
-from .models import OrderStatus  # Import the OrderStatus model
 
-class Order(models.Model):
-    # Existing fields...
-        status = models.ForeignKey(OrderStatus, on_delete=models.SET_NULL, null=True)
+class OrderStatus(models.Model):
+    name = models.CharField(max_length=50, unique=True)
 
-            # Existing methods...
+        def __str__(self):
+                return self.name
