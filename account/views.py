@@ -1,16 +1,31 @@
-from django.db import models
+# serializers.py
+from rest_framework import serializers
+from .models import MenuItem
 
-class OrderStatus(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+class MenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = MenuItem
+                    fields = ['id', 'name', 'description', 'price']
+                    # views.py
+                    from rest_framework import viewsets
+                    from rest_framework.response import Response
+                    from .models import MenuItem
+                    from .serializers import MenuItemSerializer
+                    from rest_framework.pagination import PageNumberPagination
 
-        def __str__(self):
-                return self.nameimport secrets
-                import string
-                from .models import Coupon  # Assuming you have a Coupon model
+                    class StandardResultsSetPagination(PageNumberPagination):
+                        page_size = 10
+                            page_size_query_param = 'page_size'
+                                max_page_size = 1000
 
-                def generate_coupon_code(length=10):
-                    """Generate a unique alphanumeric coupon code."""
-                        while True:
-                                code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(length))
-                                        if not Coupon.objects.filter(code=code).exists():
-                                                    return code
+                                class MenuItemViewSet(viewsets.ModelViewSet):
+                                    queryset = MenuItem.objects.all()
+                                        serializer_class = MenuItemSerializer
+                                            pagination_class = StandardResultsSetPagination
+
+                                                def get_queryset(self):
+                                                        queryset = super().get_queryset()
+                                                                search_query = self.request.query_params.get('search')
+                                                                        if search_query:
+                                                                                    queryset = queryset.filter(name__icontains=search_query)
+                                                                                            return queryset
